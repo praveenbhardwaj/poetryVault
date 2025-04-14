@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "cds build && cd app/poetries && ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
+    "build": "npx cds build && cd app/poetries && npx ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
     "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
