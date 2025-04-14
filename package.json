@@ -6,20 +6,20 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/cds": "^8.9.2",
     "@sap/xssec": "^4.6.0",
-    "@sapui5/ts-types": "^1.92.2",
-    "eslint": "^7.32.0",
     "express": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.10.0",
     "@cap-js/sqlite": "^1",
-    "@sap/cds": "^8.9.2",
     "@sap/cds-dk": "^8.9.1",
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
     "@sap/ui5-builder-webide-extension": "^1.1.9",
     "@sap/ux-ui5-tooling": "^1.17.3",
+    "@sapui5/ts-types": "^1.92.2",
     "@ui5/cli": "^4.0.14",
+    "eslint": "^7.32.0",
     "mbt": "^1.2.29",
     "rimraf": "^5.0.5",
     "ui5-middleware-simpleproxy": "^3.4.1",
@@ -31,5 +31,18 @@
     "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "mocked"
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": ":memory:"
+        }
+      }
+    }
   }
 }
