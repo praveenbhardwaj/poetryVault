@@ -12,8 +12,7 @@ cds.on('bootstrap', () => {
 });
 
 (async () => {
-  // Serve CAP services from the srv/ directory
-  await cds.serve('srv').in(app);
+  await cds.serve().in(app); // Auto-detects models from srv/, db/, gen/
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
