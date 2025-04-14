@@ -20,7 +20,8 @@
     "@sap/ux-ui5-tooling": "^1.17.3",
     "@ui5/cli": "^4.0.14",
     "mbt": "^1.2.29",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "ui5-middleware-simpleproxy": "^3.4.1"
   },
   "scripts": {
     "start": "node server.js",
