@@ -16,6 +16,7 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds": "^8.9.2",
     "@sap/cds-dk": "^8.9.1",
+    "@sap/ui5-builder-webide-extension": "^1.1.9",
     "@sap/ux-ui5-tooling": "^1.17.3",
     "@ui5/cli": "^4.0.14",
     "mbt": "^1.2.29",
