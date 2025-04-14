@@ -11,9 +11,9 @@
   "devDependencies": {
     "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
     "@sap/ui5-builder-webide-extension": "^1.1.9",
-    "@sap/ux-ui5-tooling": "1",
+    "@sap/ux-ui5-tooling": "^1.17.3",
     "@sapui5/ts-types": "~1.134.0",
-    "@ui5/cli": "^3.0.0",
+    "@ui5/cli": "^3.11.6",
     "eslint": "8.57.0",
     "ui5-middleware-simpleproxy": "^3.4.1",
     "ui5-task-zipper": "^3.1.3"
