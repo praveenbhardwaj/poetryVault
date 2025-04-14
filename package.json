@@ -33,16 +33,19 @@
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
-    "requires": {
-      "auth": {
-        "kind": "mocked"
+  "requires": {
+    "auth": {
+      "kind": "mocked"
+    },
+    "db": {
+      "kind": "sqlite",
+      "credentials": {
+        "database": "db.sqlite"
       },
-      "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": ":memory:"
-        }
+      "options": {
+        "create": true 
       }
     }
   }
+}
 }

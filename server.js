@@ -5,10 +5,8 @@ const fs = require('fs');
 
 const app = express();
 
-// Serve static files first
 app.use(express.static(path.join(__dirname, 'static')));
 
-// Explicit route for root
 app.get('/', (req, res) => {
   const indexPath = path.join(__dirname, 'static', 'index.html');
   console.log('Checking index.html at:', indexPath);
@@ -21,9 +19,20 @@ app.get('/', (req, res) => {
   }
 });
 
-// Add CAP services after custom routes
 (async () => {
-  await cds.serve().in(app);
+  try {
+    console.log('Loading CDS model...');
+    const model = await cds.load('*');
+    console.log('Model loaded:', Object.keys(model.definitions));
+    console.log('Connecting to database...');
+    await cds.connect.to('db'); // Explicitly connect to the database
+    console.log('Database connected successfully');
+    console.log('Starting CDS services...');
+    await cds.serve().in(app);
+    console.log('CDS services started successfully');
+  } catch (error) {
+    console.error('Error in CDS setup:', error);
+  }
   const port = process.env.PORT || 3000;
   console.log(`Listening on port ${port}`);
   app.listen(port, () => {
