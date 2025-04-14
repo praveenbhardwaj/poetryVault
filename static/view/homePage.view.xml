@@ -1,0 +1,85 @@
+<mvc:View
+    controllerName="poetries.controller.homePage"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:webc="sap.ui.webc.main"
+    displayBlock="true"
+    height="100%"
+>
+    <Panel id="_IDGenPanel1" width="auto" class="sapUiSmallMargin" accessibleRole="Region">
+		<headerToolbar>
+			<OverflowToolbar id="_IDGenOverflowToolbar">
+				<Title id="_IDGenTitle" text="Browse and add new poetries"/>
+			</OverflowToolbar>
+		</headerToolbar>
+        <!-- <f:header>
+            <card:Header
+                id="_IDGenHeader"
+                title="Browse and add new poetries"
+                subtitle="Buy a single-ride ticket for a date"
+                iconSrc="sap-icon://pen"
+            />
+        </f:header> -->
+        <content>
+            <VBox
+                id="_IDGenVBox"
+                class="sapUiSmallMargin"
+                justifyContent="Start"
+            >
+                <HBox
+                    id="_IDGenHBox"
+                    justifyContent="SpaceBetween"
+                >
+                    <ComboBox
+                        id="_IDGenComboBox"
+                        placeholder="Genres"
+                        class=""
+                        items="{ path: '/Genres', sorter: { path: 'ID' } }"
+                    >
+                        <core:Item
+                            id="_IDGenItem"
+                            key="{ID}"
+                            text="{name}"
+                        />
+                    </ComboBox>
+                    <ComboBox
+                        id="_IDGenComboBox1"
+                        placeholder="Poem Type"
+                        class=""
+                        items="{ path: '/Poems', sorter: { path: 'ID' } }"
+                    >
+                        <core:Item
+                            id="_IDGenItem1"
+                            key="{ID}"
+                            text="{title}"
+                        />
+                    </ComboBox>
+                    <DatePicker
+                        id="_IDGenDatePicker"
+                        width="200px"
+                        placeholder="Choose Date ..."
+                        class=""
+                    />
+                    <Button
+                        id="_IDGenButton"
+                        text="Show poems"
+                        press=".onShowPoems"
+                        type="Emphasized"
+                        class="sapUiSmallMarginEnd"
+                    />
+                </HBox>
+            </VBox>
+        </content>
+    	</Panel>
+	<FlexBox
+      id="poemCardContainer"
+      wrap="Wrap"
+      justifyContent="Start"
+      alignItems="Start"
+      direction="Row"
+      class="sapUiTinyMargin"
+    />
+</mvc:View>

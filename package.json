@@ -1,0 +1,28 @@
+{
+  "name": "poetry-vault",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sapui5/ts-types": "^1.92.2",
+    "eslint": "^7.32.0",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.10.0",
+    "@cap-js/sqlite": "^1",
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "cds build && cd app/poetries && ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
+    "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  }
+}
