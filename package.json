@@ -5,6 +5,14 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "deploy:db": "cds deploy --to postgres",
+    "build": "npx cds build && cd app/poetries && npx ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
+    "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
   "dependencies": {
     "@cap-js/postgres": "^1.13.0",
     "@sap/cds": "^8.9.2",
@@ -12,7 +20,7 @@
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.10.0",
-    "@cap-js/sqlite": "^1",
+    "@cap-js/sqlite": "^1.9.3",
     "@sap/cds-dk": "^8.9.1",
     "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
     "@sap/ui5-builder-webide-extension": "^1.1.9",
@@ -24,14 +32,6 @@
     "rimraf": "^5.0.5",
     "ui5-middleware-simpleproxy": "^3.4.1",
     "ui5-task-zipper": "^3.4.1"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "deploy:db": "cds deploy --to postgres",
-    "build": "npx cds build && cd app/poetries && npx ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
-    "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
-    "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
     "requires": {
