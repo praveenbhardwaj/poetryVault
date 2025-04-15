@@ -37,4 +37,20 @@ app.use(express.static(path.join(__dirname, 'static')));
     console.log(`Server running on port ${port}`);
   });
 })();
+
+
+console.log('CDS auth before:', cds.env.auth);
+cds.env.auth = { kind: 'mock' };
+
+cds.on('bootstrap', (app) => {
+  console.log('CDS auth during bootstrap:', cds.env.auth);
+});
+
+cds.serve('PoetryService').in(app).then(() => {
+  console.log('CDS auth after serve:', cds.env.auth);
+});
+
+app.listen(10000, () => {
+  console.log('Server running on port 10000');
+});
 module.exports = cds.server;
