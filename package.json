@@ -38,8 +38,10 @@
     "requires": {
       "db": {
         "kind": "postgres"
-      },
-      "auth": false
+      }
+    },
+    "auth": {
+      "impl": false
     }
   }
 }
