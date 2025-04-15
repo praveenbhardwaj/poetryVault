@@ -4,6 +4,12 @@ const path = require('path');
 
 const app = express();
 
+cds.on('bootstrap', (app) => {
+  cds.env.auth = { kind: 'mock' };
+});
+
+
+
 // Serve static UI from /static
 app.use(express.static(path.join(__dirname, 'static')));
 
@@ -31,3 +37,4 @@ app.use(express.static(path.join(__dirname, 'static')));
     console.log(`Server running on port ${port}`);
   });
 })();
+module.exports = cds.server;
