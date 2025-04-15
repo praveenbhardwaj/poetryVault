@@ -41,7 +41,8 @@
       }
     },
     "auth": {
-      "impl": false
+      "impl": false,
+      "kind": "mock"
     }
   }
 }
