@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/postgres": "^1.13.0",
     "@sap/cds": "^8.9.2",
     "@sap/xssec": "^4.6.0",
     "express": "^4"
@@ -27,25 +28,17 @@
   },
   "scripts": {
     "start": "node server.js",
+    "deploy:db": "cds deploy --to postgres",
     "build": "npx cds build && cd app/poetries && npx ui5 build --all && cd ../../ && mkdir -p static && cp -r app/poetries/dist/* static/",
     "watch-poetries": "cds watch --open poetries/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy poetry-vault --delete-services --delete-service-keys --delete-service-brokers",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
-  "requires": {
-    "auth": {
-      "kind": "mocked"
-    },
-    "db": {
-      "kind": "sqlite",
-      "credentials": {
-        "database": "db.sqlite"
-      },
-      "options": {
-        "create": true 
+    "requires": {
+      "db": {
+        "kind": "postgres"
       }
     }
   }
-}
 }
