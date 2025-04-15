@@ -1,6 +1,7 @@
 using poetryvault from '../db/schema';
 
 service PoetryService {
+  @restrict: false
   entity Poets  as projection on poetryvault.Poet;
   entity Poems  as projection on poetryvault.Poem;
   entity Genres as projection on poetryvault.Genre;
